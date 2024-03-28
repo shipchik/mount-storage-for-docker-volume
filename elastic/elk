@@ -1,0 +1,24 @@
+server {
+    listen 80;
+    server_name _;
+
+    location /  {
+            root /usr/share/nginx/html;
+        }
+
+    location /elastic/ {
+        proxy_pass http://elasticsearch1:9200/;
+        
+
+        auth_basic "Restricted Content";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+
+    location /kibana/ {
+        proxy_pass http://kibana:5601/;
+        
+
+        auth_basic "Restricted Content";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+}

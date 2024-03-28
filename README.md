@@ -26,5 +26,15 @@ In cloud provider connect your storage to instance, than go to your instance
   output: /dev/sda1: UUID="your_uid" TYPE="ext4"
   
   nano /etc/fstab
-  and insert: UUID=your_uuid /path/to/mount auto rw,user,auto 0 0
+  and insert: UUID=your_uuid /home/ubuntu/disk auto rw,user,auto 0 0
+  
+* than create an .htpasswd file in elastic folder
+ ``` sh
+ htpasswd -c /path/to/elastic/.htpasswd username
+ ```
+
+* start docker compose files
+``` sh 
+sudo docker-compose up -d
+sudo docker-compose -f nginx-compose.yaml up -d
 
